@@ -12,7 +12,16 @@
         Double hourlyPay = Double.parseDouble(request.getParameter("pay"));
         Double pretaxDeduct = Double.parseDouble(request.getParameter("pretax"));
         Double posttaxDeduct = Double.parseDouble(request.getParameter("posttax"));
-        
+        if (hoursWorked>40){
+            Double RegPay = 40*hourlyPay;
+            Double OTHours = hoursWorked - 40;
+            Double OTRate = hourlyPay * 1.5;
+            Double OTPay = OTRate * OTHours;
+            Double grossPay = OTPay+RegPay;
+        }   
+        else {
+            Double grossPay = hoursWorked*hourlyPay;
+        }
     %>
     
     
